@@ -1,0 +1,87 @@
+  <%= form_for Event.new do |f| %>
+
+      <div id="eventGroupSelectID">
+        <h2>Select or Create New Group</h2>
+        <div class="lineSignInPopUp wrapper">
+          <div class="deviseSignIn">
+            <div class="pad">
+              <ul class="list1">
+                <li>
+                  <h3><%= f.label :Select_Existing_Group %></h3><br />
+                  <%= f.collection_select(:Eventgroup_id, Eventgroup.all, :id, :groupName, {:prompt=>'Please Select Group'}, {:class=>'select',:style=>'width:200px'}) %>
+                </li>
+                <li>
+                  <a href = "javascript:void(0)"  class="signInButton" style="float: left;width: 140px" onclick = "document.getElementById('eventGroupSelectID').style.display='none';document.getElementById('createNewGroupID').style.display='none';document.getElementById('eventCreateID').style.display='block'">Create Event</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="facebookSignIn">
+            <a href = "javascript:void(0)"  class="signInButton" style="float: left;width: 150px; margin-left: 25%; margin-top: 15%" onclick = "document.getElementById('eventGroupSelectID').style.display='none';document.getElementById('createNewGroupID').style.display='block';document.getElementById('eventCreateID').style.display='none'">Create New Group</a>
+          </div>
+        </div>
+       </div>
+
+      <div id="createNewGroupID">
+        <div><a href = "javascript:void(0)"  class="backButton" onclick = "document.getElementById('eventGroupSelectID').style.display='block';document.getElementById('createNewGroupID').style.display='none';document.getElementById('eventCreateID').style.display='none'">Back</a></div>
+        <%= render :file => 'events/group' %>
+      </div>
+
+      <div id="eventCreateID">
+        <div><a href = "javascript:void(0)"  class="backButton" onclick = "document.getElementById('eventGroupSelectID').style.display='block';document.getElementById('createNewGroupID').style.display='none';document.getElementById('eventCreateID').style.display='none'">Back</a></div>
+      <h2>New Event</h2>
+      <%= f.label :event_name %><br>
+      <%= f.text_field :eventName, autofocus: true,placeholder: "First Name", class:'textfield', id:'eventNameID' %><br><br />
+
+      <%= f.label :event_type %><br>
+      <%= f.select(:eventType, options_for_select([['Art',0],['Spirituality',1],['Literature',2],['Craftswap',3],['Dance',4],['Education',5],['Wine-and-food',6],
+                                                   ['Games',7],
+                                                   ['Identity',8],
+                                                   ['Language',9],
+                                                   ['Parents',10],
+                                                   ['Community',11],
+                                                   ['Music',12],
+                                                   ['Outdoors',13],
+                                                   ['Pets-animals',14],
+                                                   ['Photography',15],
+                                                   ['Social',16],
+                                                   ['Sports',17],
+                                                   ['Newtech',18]]),{:prompt => 'Select'}, { :class => 'select', :style=>'width:40%' }) %><br><br />
+
+      <%= f.label :location_address %><br>
+      <%= f.text_field :locationAddress,autofocus: true,placeholder: "Address", class:'textfield' %><br><br />
+
+      <%= f.label :location_city %><br>
+      <%= f.text_field :city,autofocus: true,placeholder: "City", class:'textfield' %><br><br />
+
+      <%= f.label :location_country %><br>
+      <%= f.text_field :country,autofocus: true,placeholder: "Country", class:'textfield' %><br><br />
+
+
+      <%= f.label :location_latitude %><br>
+      <%= f.text_field :locationLat,autofocus: true,placeholder: "Location Latitude", class:'textfield' %><br><br />
+
+
+      <%= f.label :location_longitude %><br>
+      <%= f.date_field :locationLon,autofocus: true,placeholder: "Location Langitude", class:'textfield' %><br><br />
+
+      <%= f.label :event_fromdate %><br>
+      <%= f.date_field :eventFromDate,autofocus: true,placeholder: "Event Start Date", class:'textfield' %><br><br />
+
+      <%= f.label :event_todate %><br>
+      <%= f.date_field :eventToDate,autofocus: true,placeholder: "Event End Date", class:'textfield' %><br><br />
+
+      <%= f.label :event_desctiption %><br>
+      <%= f.text_field :eventDescription,autofocus: true,placeholder: "Event Description", class:'textfield' %><br><br />
+
+      <%= f.label :event_image %><br>
+      <%= f.text_field :eventImage,autofocus: true,placeholder: "Event Image", class:'textfield' %><br><br />
+
+      <div class="loginButton" style="width: 150px">
+        <%= f.submit %>
+      </div>
+      </div>
+
+  <% end %>
+
+

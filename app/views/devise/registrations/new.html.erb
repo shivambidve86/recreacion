@@ -1,0 +1,57 @@
+<script type="text/javascript">
+    $('document').ready(function(){
+        $('#signUP').click(function(){
+            if($('#emailId').val() == '' || $('#firstName').val() == '' || $('#lastName').val() == '' || $('#registerPwd').val() == '' ){
+                alert("First name, Last name, E-mail ID and Password cannot be blank");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        });
+
+    });
+</script>
+
+<div class="userLogIN">
+<h1>Sign up</h1>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+
+    <%# <div><%= f.label :username <br />
+  <%= f.text_field :username <br /> %>
+
+    <div><%= f.label :Name %> <br />
+      <%= f.text_field :firstname, autofocus: true,placeholder: "First Name", class:'textfield', id:'firstName' %>
+      <%= f.text_field :lastname, autofocus: true,placeholder: "Last Name", class:'textfield', id:'lastName' %> <br /><br />
+
+      <%= f.label :user_name %> <br />
+      <%= f.text_field :username, autofocus: true,placeholder: "Please enter User Name", class:'textfield' %><br /><br />
+
+      <%= f.label :password %> <br />
+      <%= f.password_field :password,autocomplete: "off", autofocus: true,placeholder: "Please enter password", class:'textfield', id:'registerPwd' %><br /><br />
+
+      <%= f.label :password_confirmation %> <br />
+      <%= f.password_field :password_confirmation,autocomplete: "off", autofocus: true,placeholder: "Please confirm password", class:'textfield' %><br /><br />
+
+      <%= f.label :DOB %> <br />
+      <%= f.date_field :DOB,autocomplete: "off", autofocus: true,placeholder: "DD/MM/YYYY", class:'textfield' %><br /><br />
+
+      <%= f.label :gender %> <br />
+      <%= f.text_field :gender,autocomplete: "off", autofocus: true,placeholder: "Please enter gender", class:'textfield' %><br /><br />
+
+      <%= f.label :contact %> <br />
+      <%= f.text_field :contact,autocomplete: "off", autofocus: true,placeholder: "Mobile/Land line", class:'textfield' %><br /><br />
+
+      <%= f.label :email %> <br />
+      <%= f.text_field :email,autocomplete: "off", autofocus: true,placeholder: "Your E-mail ID", class:'textfield', id:'emailId' %><br /><br />
+
+    </div>
+
+    <div><%= f.submit "Sign up", class: 'loginButton', id:'signUP' %></div>
+<% end %>
+
+</div>

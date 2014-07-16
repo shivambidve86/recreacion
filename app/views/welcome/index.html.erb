@@ -1,0 +1,192 @@
+<div id="signInUser" class="signInUserWhiteCont">
+  <div class="signInUserScrollWindow">
+    <%= render :file => 'devise/sessions/new' %>
+  </div>
+  <a href = "javascript:void(0)" class="signInUserCloseWindow" onclick = "document.getElementById('signInUser').style.display='none';document.getElementById('fade').style.display='none';document.content='clear'"></a>
+</div>
+
+<div id="signUPUser" class="signInUserWhiteCont">
+  <div class="signInUserScrollWindow">
+    <%= render :file => 'devise/registrations/new' %>
+  </div>
+  <a href = "javascript:void(0)" class="signInUserCloseWindow" onclick = "document.getElementById('signUPUser').style.display='none';document.getElementById('fade').style.display='none';document.content='clear'"></a>
+</div>
+
+<div id="forgetPwd" class="signInUserWhiteCont">
+  <div class="signInUserScrollWindow">
+    <%= render :file => 'devise/passwords/new' %>
+  </div>
+  <a href = "javascript:void(0)" class="signInUserCloseWindow" onclick = "document.getElementById('forgetPwd').style.display='none';document.getElementById('fade').style.display='none';document.content='clear'"></a>
+</div>
+
+<div id="fade" class="signInUserBlackBack"></div>
+<div id="HomeID">
+<div id="rBody2ID" class="rBody2">
+<div class="rMain">
+<div class="relative">
+
+   <div class="gallery">
+     <div class="insideGallary">
+       <ul id="myRoundabout">
+         <li><%= image_tag("img2.png", :alt => "") %></li>
+         <li><%= image_tag("img3.png", :alt => "") %></li>
+         <li><%= image_tag("img2.png", :alt => "") %></li>
+         <li><%= image_tag("img1.png", :alt => "") %></li>
+       </ul>
+     </div>
+    </div>
+
+<div class="galleryRight">
+<div class="pad">
+  <ul class="list1">
+    <li>
+      <a href = "javascript:void(0)"  class="signInButton" style="float: right; width: 140px" onclick="document.getElementById('signInUser').style.display='block';document.getElementById('fade').style.display='block'">
+        Sign In !</a></li><br />
+    <li>
+      <a href = "javascript:void(0)"  class="signInButton" style="float: right; width: 140px" onclick="document.getElementById('signUPUser').style.display='block';document.getElementById('fade').style.display='block'">
+        New User..Sign Me UP!</a>
+    </li>
+  </ul>
+</div>
+</div>
+</div>
+
+<section id="rContent">
+ <div class="rbody4">
+  <div class="line1">
+    <div class="line2 wrapper">
+      <div class="wrapper">
+        <article class="col1">
+            <div class="pad">
+              <h2>Search Result....</h2></th>
+              <div>
+                <form action="" class="search-form frame inbtn rlarge">
+                  <input type="text" name="search" class="search-input" placeholder="Search events nearby to your location.." />
+                  <input class="search-btn" value="Go" href="javascript:void(0)" onclick = "document.getElementById('rBody2ID').style.display='none';document.getElementById('searchContentID').style.display='block'" />
+                </form>
+              </div>
+              <div>
+                <a href = "javascript:void(0)"  class="signInButton" style="float: left; width: 180px" onclick="document.getElementById('signInUser').style.display='block';document.getElementById('fade').style.display='block'">
+                  Create/Join New Event !</a>
+              </div>
+
+          </div>
+        </article>
+        <article class="col2 pad_left1">
+          <h2>Experiences</h2>
+          <div class="pad">
+            <ul class="list1">
+              <li><a href="#">Fashion Show</a>Maecenas ut ipsum id nibh cursus sagittis sit...</li>
+              <li><a href="#">Animals Photo Session</a>Mauris iaculis semper magna in eleifend. Phasellus a...</li>
+              <li><a href="#">Sport Shots</a>Quisque ipsum ipsum, tincidunt eu euismod non, blandit...</li>
+            </ul>
+          </div>
+        </article>
+        <article class="col3 pad_left1">
+          <h2>Shortly About Me</h2>
+          <div class="pad">
+            <p> This Photographer’s Portfolio is one of free website templates created by TemplateMonster.com team </p>
+            </div>
+        </article>
+      </div>
+      <div class="wrapper buttons">
+        <article class="col1"> <a href="#" class="button">Read More</a> </article>
+        <article class="col2 pad_left1"> <a href="#" class="button">Read More</a> </article>
+        <article class="col3 pad_left1"> <a href="#" class="button">News Archive</a> </article>
+      </div>
+    </div>
+  </div>
+ </div>
+
+</section>
+</div>
+  <script type="text/javascript">Cufon.now();</script>
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $('#myRoundabout').roundabout({
+              shape: 'marqueeLoop',
+              minScale: 0.93, // tiny!
+              maxScale: 1, // tiny!
+              easing: 'easeOutExpo',
+              clickToFocus: 'true',
+              focusBearing: '0',
+              duration: 800,
+              reflect: true
+          });
+      });
+  </script>
+</div>
+
+<div id="searchContentID" class="searchContentMain">
+  <a href = "javascript:void(0)" class="signInButton" style="float: right; width: 80px" onclick = "document.getElementById('searchContentID').style.display='none';document.getElementById('rBody2ID').style.display='block'">Back</a>
+  <div class="searchContent">
+    <div class="signInUserScrollWindow">
+      <h2>MeetUP Events</h2>
+      <table class="searchTable" id="vendorList">
+        <tbody>
+        <% @rmeetupResult.each do |result| %>
+            <tr ng-repeat="Project in ProjectList" ems-data-href="#/manage/project/{{Project.ProjectId}}">
+              <td><%= "#{result.name}".to_s %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<div id="aboutMeID">
+  <h2>About Me</h2>
+
+  <h3>Augue vivamus sed ipsum commodo lorem dolor</h3>
+  <p>Gravida dis placerat lectus ante vel nunc euismod est turpis sodales. Diam
+    tempor dui lacinia eget ornare varius gravida. Gravida dis placerat lectus ante
+    vel nunc euismod est turpis sodales. Diam tempor dui lacinia accumsan vivamus
+    augue cubilia vivamus nisi eu eget ornare varius gravida euismod.  Gravida dis
+    lorem ipsum dolor placerat magna tempus feugiat.</p>
+  <p>Lectus ante vel nunc euismod est turpis sodales. Diam tempor dui lacinia
+    accumsan vivamus augue cubilia vivamus nisi eu eget ornare varius gravida dolore
+    euismod lorem ipsum dolor.</p>
+  <p>Gravida dis placerat lectus ante vel nunc euismod eget ornare varius gravida euismod lorem ipsum dolor sit amet consequat<br />
+  feugiat. Gravida dis placerat lectus ante vel nunc euismod eget ornare varius gravida euismod lorem ipsum dolor sit amet.</p>
+</div>
+
+<script type="text/javascript">
+
+    jQuery.fn.n33_scrolly = function(offset) {
+
+        jQuery(this).click(function(e) {
+            var h = jQuery(this).attr('href'), target;
+
+            if (h.charAt(0) == '#' && h.length > 1 && (target = jQuery(h)).length > 0)
+            {
+                var pos = Math.max(target.offset().top, 0);
+                e.preventDefault();
+
+                if (offset)
+                {
+                    if (typeof(offset) == 'function')
+                        pos -= (offset)();
+                    else
+                        pos -= offset;
+                }
+
+                jQuery('body,html').animate({ scrollTop: pos-120}, 500, 'swing');
+            }
+        });
+    };
+
+    jQuery(function() {
+
+        var $window = $(window);
+
+        $('.scrolly').n33_scrolly();
+
+        if (skel.vars.IEVersion < 10)
+            $('form').n33_formerize();
+
+    });
+
+</script>

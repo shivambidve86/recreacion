@@ -1,0 +1,24 @@
+.col1, .col2, .col3, .cols {
+	float:left
+}
+.col1 {
+	width:35%
+}
+.col2 {
+	width:35%
+}
+.col3 {
+	width:20%
+}
+/* index.html */
+#rMainPage .buttons .col1 .button {
+	margin-left:10px
+}
+#rMainPage .buttons .col2 .button {
+	margin-left:24px
+}
+#rMainPage .buttons .col3 .button {
+	margin-left:76px
+}
+
+

@@ -1,0 +1,16 @@
+<h2>Create New Group</h2>
+<%= form_for Eventgroup.new do |f| %>
+      <%= f.label :group_name %><br>
+      <%= f.text_field :groupName %><br><br />
+
+      <%= f.label :group_description %><br>
+      <%= f.text_field :groupDescription %><br><br />
+
+      <%= f.label :group_photo %><br>
+      <%= f.date_select :groupPhoto %><br><br />
+
+    <div class="loginButton" style="width: 150px" href = "javascript:void(0)" class="loginButton" style="width: 150px" onclick = "document.getElementById('eventGroupSelectID').style.display='block';document.getElementById('createNewGroupID').style.display='none';document.getElementById('eventCreateID').style.display='none'">
+      <%= f.submit %>
+    </div>
+
+<% end %>

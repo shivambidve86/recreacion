@@ -1,0 +1,66 @@
+<script type="text/javascript">
+    $('document').ready(function(){
+        $('#submit').click(function(){
+            if($('#uname').val() == ''){
+                alert("Please enter username or e-mail id");
+                return false;
+            }
+            else if($('#upass').val()==''){
+                alert("Please enter password");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        });
+
+    });
+</script>
+<div class="userLogIN">
+  <h1>Log in</h1>
+  <div class="lineSignInPopUp wrapper">
+    <div class="deviseSignIn">
+    <%= form_for(:user, :url => session_path(:user)) do |f| %>
+
+        <%= f.text_field :login, autofocus: true,placeholder: "E-Mail ID OR User Name", class:'textfielddeviselogin', id:'uname' %><br /><br />
+
+        <%= f.password_field :password, autocomplete: "off",placeholder:  "Password to Sign In", class:'textfielddeviselogin', id:'upass' %><br />
+        <p class="keepLogUser">
+          <% if devise_mapping.rememberable? -%>
+            <div><%= f.check_box :remember_me %> <%= f.label :remember_me ,class:'keepLogUserlabel'%></div>
+        <% end -%>
+        </p>
+
+        <p class="keepLogUser">
+          <%= f.submit "Sign In", class: 'loginButton', id: 'submit'%>
+          <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+              <a href = "javascript:void(0)"   class="keepLogUserlabel" style="margin-top:15px" onclick="document.getElementById('signInUser').style.display='none';document.getElementById('forgetPwd').style.display='block';document.getElementById('fade').style.display='block'">
+                Forgot your password?</a>
+              <br />
+          <% end -%>
+        </p>
+        <div class="new_user1 keepLogUser">
+          <p class="keepLogUserlabel">New User....?</p>
+          <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+              <a href = "javascript:void(0)"  class="loginButton" onclick="document.getElementById('signInUser').style.display='none';document.getElementById('signUPUser').style.display='block';document.getElementById('fade').style.display='block'">
+                Sign Me UP!</a>
+              <br />
+          <% end -%>
+        </div>
+    <% end %>
+    </div>
+    <div class="facebookSignIn">
+    <%= link_to (user_omniauth_authorize_path(:facebook)) do %>
+        <div id="facebookImage"></div>
+    <% end %>
+    </div>
+  </div>
+  <div class="errorMessage">
+    <% flash.each do |name, msg| %>
+        <p> <%= content_tag :div, msg, :id => "flash_#{name}" %></p>
+    <% end %>
+  </div>
+</div>
+

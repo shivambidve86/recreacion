@@ -1,0 +1,50 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+# log4r config file
+
+log4r_config:
+  # define all loggers ...
+  loggers:
+  - name      : production
+    level     : WARN
+    trace     : 'false'
+    outputters : 
+    - datefile_production
+  - name      : development
+    level     : DEBUG
+    trace     : 'true'
+    outputters : 
+    - datefile_development
+  - name      : test
+    level     : DEBUG
+    trace     : 'true'
+    outputters : 
+    - datefile_test
+
+  # define all outputters (incl. formatters)
+  outputters:
+  - type: DateFileOutputter
+    name: datefile_production
+    dirname: "log"
+    filename: "production.log"
+    formatter:
+      date_pattern: '%H:%M:%S'
+      pattern     : '%d %l: %m '
+      type        : PatternFormatter
+  - type: DateFileOutputter
+    name: datefile_development
+    dirname: "log"
+    filename: "development.log"
+    formatter:
+      date_pattern: '%H:%M:%S'
+      pattern     : '%d %l: %m '
+      type        : PatternFormatter
+  - type: DateFileOutputter
+    name: datefile_test
+    dirname: "log"
+    filename: "test.log"
+    formatter:
+      date_pattern: '%H:%M:%S'
+      pattern     : '%d %l: %m '
+      type        : PatternFormatter

@@ -1,0 +1,51 @@
+<script type="text/javascript">
+    $(window).scroll(function(){
+
+        height=$(window).scrollTop();
+        if(height>30){
+            $("#logo").css("width","230px");
+        }
+        else{
+            $("#logo").css("width","350px");      }
+    });
+</script>
+
+<div style="width:50%; float: left; margin-top: 15px">
+   <%= link_to (welcome_index_path) do %>
+      <%= image_tag("recrecionLogo.png", :alt => "", :id => "logo" ) %>
+   <% end %>
+ </div>
+<div class="userLogInfo">
+<div style="height: 20px">
+  <% if user_signed_in? %>
+      <div class="signOutUser"> <%= link_to "Sign out", destroy_user_session_path, :method => :delete %> </div>
+      <div class="userNameDisplay"><%= current_user.lastname %></div>
+      <div class="userNameDisplay"> <%= current_user.firstname %> </div>
+  <% end %>
+  <div class="userWarning">
+    <% flash.each do |name, msg| %>
+        <p> <%= content_tag :div, msg, :id => "flash_#{name}" %></p>
+    <% end %>
+  </div>
+</div>
+
+<form id="search" action="#" method="post">
+<div>
+<input type="submit" class="submit" value="">
+<input class="input" type="text" value="Site Search" onBlur="if(this.value=='') this.value='Site Search'" onFocus="if(this.value =='Site Search' ) this.value=''">
+</div>
+</form>
+</div>
+
+<nav>
+<ul id="menu">
+<li id="active" class="scrolly"><a href="#HomeID" class="scrolly" type="">Home</a></li>
+<li><a href="#aboutMeID" class="scrolly">About</a></li>
+<li><a href="folio.html">Folio</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="news.html">News</a></li>
+<li class="end"><a href="contact.html">Contact</a></li>
+</ul>
+</nav>
+
+

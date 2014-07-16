@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= content_for?(:title) ? yield(:title) : "Recreacion" %></title>
+  <link href="recreationApplication.css" rel="stylesheet" type="text/css">
+  <%= stylesheet_link_tag "application", media: "all",
+                          "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
+  <link href="rReset.css" rel="stylesheet" type="text/css">
+  <link href="rLayout.css" rel="stylesheet" type="text/css">
+  <link href="rStyle.css" rel="stylesheet" type="text/css">
+  <link href="rStyleScss.scss" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/skel-noscript.css" />
+  <script type="text/javascript" src="jquery-1.11.0.js"></script>
+  <script type="text/javascript" src="cufon-yui.js"></script>
+  <script type="text/javascript" src="cufon-replace.js"></script>
+  <script type="text/javascript" src="Terminal_Dosis_300.font.js"></script>
+  <script type="text/javascript" src="atooltip.jquery.js"></script>
+  <script src="roundabout.js" type="text/javascript"></script>
+  <script src="skel.min.js" type="text/javascript"></script>
+  <script src="init.js" type="text/javascript"></script>
+  <script src="roundabout_shapes.js" type="text/javascript"></script>
+  <script src="jquery.easing.1.2.js" type="text/javascript"></script>
+  <script type="text/javascript" src="script.js"></script>
+  <%= csrf_meta_tags %>
+</head>
+<body id="rMainPage">
+  <div class="rBody1">
+      <div class="wrapperrMain">
+      <%= render :file => 'layouts/rheader' %>
+      </div>
+    <div class="belowWrapperMain">
+      <%= yield %>
+    </div>
+  </div>
+  <div class="rMain">
+  <%= render 'layouts/rfooter' %>
+  </div>
+</body>
+</html>
