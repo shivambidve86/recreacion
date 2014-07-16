@@ -47,6 +47,7 @@ group :development do
   gem 'capistrano-rbenv', '~> 2.0'
   gem 'capistrano-unicorn-nginx', '~> 2.0'
   gem 'capistrano-postgresql', '~> 3.0'
+  gem 'net-ssh', '2.7.0'
 end
 
 

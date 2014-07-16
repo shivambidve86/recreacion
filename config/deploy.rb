@@ -1,38 +1,26 @@
 # config valid only for Capistrano 3.1
 lock '3.2.1'
 
-set :application, 'my_app_name'
-set :repo_url, 'git@example.com:me/my_repo.git'
+set :application, 'recreacion'
+set :repo_url, 'git@github.com:shivambidve86/recreacion.git'
+#set :repo_url, 'https://shivambidve86:shivam86@github.com/shivambidve86/recreacion.git'
 
-# Default branch is :master
-# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
+set :deploy_to, -> { "/var/www/#{fetch(:application)}" }
+set :rails_env, 'production'
 
-# Default deploy_to directory is /var/www/my_app
-# set :deploy_to, '/var/www/my_app'
+set :linked_files, %w{config/database.yml config/config.yml config/secrets.yml}
 
-# Default value for :scm is :git
-# set :scm, :git
 
-# Default value for :format is :pretty
-# set :format, :pretty
 
-# Default value for :log_level is :debug
-# set :log_level, :debug
+# describe the rbenv environment we are deploying into
+set :rbenv_type, :user
+set :rbenv_ruby, '2.0.0-p451'
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 
-# Default value for :pty is false
-# set :pty, true
-
-# Default value for :linked_files is []
-# set :linked_files, %w{config/database.yml}
-
-# Default value for linked_dirs is []
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-
-# Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
-
-# Default value for keep_releases is 5
-# set :keep_releases, 5
+# dirs we want symlinked to the shared folder
+# during deployment
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 namespace :deploy do
 
@@ -41,6 +29,9 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
+      #
+      # The capistrano-unicorn-nginx gem handles all this
+      # for this example
     end
   end
 
