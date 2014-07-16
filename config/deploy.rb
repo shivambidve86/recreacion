@@ -22,6 +22,9 @@ set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 # during deployment
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
+set :use_sudo, true
+ssh_options[:keys] = ["E:\2ndSemester\AdvancedClientSideScripting2\cacert/cacert.pem"]
+
 namespace :deploy do
 
   desc 'Restart application'
