@@ -2,8 +2,8 @@
 lock '3.2.1'
 
 set :application, 'recreacion'
-set :repo_url, 'git@github.com:shivambidve86/recreacion.git'
-#set :repo_url, 'https://shivambidve86:shivam86@github.com/shivambidve86/recreacion.git'
+#set :repo_url, 'git@github.com:shivambidve86/recreacion.git'
+set :repo_url, 'https://shivambidve86:shivam86@github.com/shivambidve86/recreacion.git'
 
 set :deploy_to, -> { "/var/www/#{fetch(:application)}" }
 set :rails_env, 'production'
